@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hand Mirror System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">MirrorHand</div>
+        <div class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#telemetry">Telemetry</a>
+        </div>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Real-time Mechatronics</p>
+          <h1>Mechanical System That Mirrors Human Hand Motion</h1>
+          <p class="lede">
+            Built a low-latency, MQTT-driven control loop that translates hand gestures into
+            precise mechanical movements in real time.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#signal-flow">View Signal Flow</a>
+            <a class="btn ghost" href="#hardware">See Hardware Stack</a>
+          </div>
+          <div class="stats">
+            <div>
+              <p class="stat-value">18ms</p>
+              <p class="stat-label">End-to-end latency</p>
+            </div>
+            <div>
+              <p class="stat-value">120Hz</p>
+              <p class="stat-label">Sensor sampling</p>
+            </div>
+            <div>
+              <p class="stat-value">99.4%</p>
+              <p class="stat-label">Motion fidelity</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <svg class="hand-svg" viewBox="0 0 320 420" aria-hidden="true">
+            <defs>
+              <linearGradient id="handGlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f7b787" />
+                <stop offset="100%" stop-color="#ff7a4f" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M112 80c0-18 24-20 28-2l8 40V72c0-20 28-22 30-2l8 50V68c0-18 26-20 30-3l10 58V84c0-16 24-18 28-3l16 88c6 34-4 74-32 96-26 22-60 32-92 28-38-4-70-36-76-74l-10-62c-4-24 20-40 32-18l8 24V80z"
+              fill="url(#handGlow)"
+              opacity="0.9"
+            />
+            <path
+              d="M78 156c-12-28 16-46 30-22l14 40"
+              fill="none"
+              stroke="#ffebd6"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <circle cx="238" cy="122" r="42" fill="none" stroke="#ffd8c2" stroke-width="3" />
+            <path
+              d="M210 132c10-10 24-14 38-10"
+              stroke="#fff3ea"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+          </svg>
+
+          <svg class="signal-svg" viewBox="0 0 360 200" aria-hidden="true">
+            <path
+              d="M10 130 C40 40, 80 170, 120 70 S200 150, 250 90 320 140, 350 60"
+              fill="none"
+              stroke="#87f0ff"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 150 C40 100, 70 180, 110 120 S190 170, 240 110 320 180, 350 90"
+              fill="none"
+              stroke="#ffb087"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              opacity="0.7"
+            />
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="overview" class="section overview">
+        <div class="section-title">
+          <h2>System Overview</h2>
+          <p>Signal capture, processing, and mechanical mirroring in one continuous loop.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Sensing Layer</h3>
+            <p>
+              Flex sensors and IMU streams capture finger curvature and wrist orientation at
+              120 Hz. The data is serialized and pushed over MQTT for immediate processing.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Python Signal Core</h3>
+            <p>
+              A Python-based filter stabilizes raw values, smoothing noise while maintaining
+              responsiveness. Calibrated data is forwarded to the motion controller in under
+              5 ms.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Mechanical Mirror</h3>
+            <p>
+              Servo-driven linkages recreate the hand’s pose in real time. A proportional
+              control layer keeps the mechanical hand aligned with the user’s gestures.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="pipeline" class="section pipeline">
+        <div class="pipeline-grid">
+          <div>
+            <h2>Signal Pipeline</h2>
+            <p>
+              A resilient MQTT backbone keeps latency low and message order consistent, even
+              under noisy sensor conditions.
+            </p>
+            <ul class="steps">
+              <li>Capture sensor packets on embedded MCU</li>
+              <li>Stream to broker using QoS 1</li>
+              <li>Filter + normalize in Python</li>
+              <li>Publish motion targets to controller</li>
+            </ul>
+          </div>
+          <div class="pipeline-visual">
+            <svg viewBox="0 0 420 240" aria-hidden="true">
+              <defs>
+                <linearGradient id="pipeGlow" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#8fffe8" />
+                  <stop offset="100%" stop-color="#34b6ff" />
+                </linearGradient>
+              </defs>
+              <rect x="30" y="40" width="120" height="60" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <rect x="170" y="40" width="120" height="60" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <rect x="310" y="40" width="80" height="60" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <rect x="80" y="150" width="120" height="60" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <rect x="230" y="150" width="120" height="60" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <path d="M150 70h20" stroke="url(#pipeGlow)" stroke-width="4" stroke-linecap="round" />
+              <path d="M290 70h20" stroke="url(#pipeGlow)" stroke-width="4" stroke-linecap="round" />
+              <path d="M170 180h40" stroke="url(#pipeGlow)" stroke-width="4" stroke-linecap="round" />
+              <path d="M210 70v80" stroke="url(#pipeGlow)" stroke-width="4" stroke-linecap="round" />
+              <text x="90" y="75" fill="#d7e7f2" font-size="14">Sensors</text>
+              <text x="200" y="75" fill="#d7e7f2" font-size="14">Broker</text>
+              <text x="323" y="75" fill="#d7e7f2" font-size="14">MCU</text>
+              <text x="110" y="185" fill="#d7e7f2" font-size="14">Python</text>
+              <text x="250" y="185" fill="#d7e7f2" font-size="14">Actuator</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="signal-flow" class="section detail">
+        <div class="detail-grid">
+          <div>
+            <h2>Signal Flow (Button Action)</h2>
+            <p>
+              The “View Signal Flow” button brings you here. It expands on the exact
+              processing steps between sensing and actuation, including how the Python
+              filter cleans the raw stream before targets are published.
+            </p>
+            <div class="detail-list">
+              <div>
+                <h4>Raw Capture</h4>
+                <p>Sensor packets are time-stamped, buffered, and queued for MQTT publish.</p>
+              </div>
+              <div>
+                <h4>Python Filter</h4>
+                <p>Adaptive smoothing protects precision without hiding fast motion changes.</p>
+              </div>
+              <div>
+                <h4>Motion Targets</h4>
+                <p>Normalized vectors are delivered to the controller within milliseconds.</p>
+              </div>
+            </div>
+          </div>
+          <div class="detail-visual">
+            <svg viewBox="0 0 300 260" aria-hidden="true">
+              <circle cx="80" cy="60" r="34" fill="#101d2a" stroke="#3a4b5c" />
+              <circle cx="220" cy="60" r="34" fill="#101d2a" stroke="#3a4b5c" />
+              <circle cx="150" cy="180" r="42" fill="#101d2a" stroke="#3a4b5c" />
+              <path d="M114 60h72" stroke="#87f0ff" stroke-width="4" stroke-linecap="round" />
+              <path d="M150 94v44" stroke="#ff7a4f" stroke-width="4" stroke-linecap="round" />
+              <text x="56" y="65" fill="#d7e7f2" font-size="12">Input</text>
+              <text x="200" y="65" fill="#d7e7f2" font-size="12">MQTT</text>
+              <text x="126" y="186" fill="#d7e7f2" font-size="12">Filter</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="hardware" class="section hardware">
+        <div class="detail-grid">
+          <div class="detail-visual">
+            <svg viewBox="0 0 320 260" aria-hidden="true">
+              <rect x="20" y="30" width="120" height="70" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <rect x="180" y="30" width="120" height="70" rx="16" fill="#101d2a" stroke="#3a4b5c" />
+              <rect x="60" y="140" width="200" height="80" rx="18" fill="#101d2a" stroke="#3a4b5c" />
+              <path d="M140 65h40" stroke="#87f0ff" stroke-width="4" stroke-linecap="round" />
+              <path d="M160 100v40" stroke="#ff7a4f" stroke-width="4" stroke-linecap="round" />
+              <text x="52" y="70" fill="#d7e7f2" font-size="12">Sensors</text>
+              <text x="210" y="70" fill="#d7e7f2" font-size="12">Servos</text>
+              <text x="110" y="188" fill="#d7e7f2" font-size="12">Linkage Frame</text>
+            </svg>
+          </div>
+          <div>
+            <h2>Hardware Stack (Button Action)</h2>
+            <p>
+              The “See Hardware Stack” button opens this section so visitors can understand
+              the physical build. Everything is tuned for fast response and stable motion.
+            </p>
+            <div class="detail-list">
+              <div>
+                <h4>Sensor Glove</h4>
+                <p>Flex sensors + IMU capture finger bend and wrist orientation.</p>
+              </div>
+              <div>
+                <h4>Servo Array</h4>
+                <p>High-torque servos drive the mechanical hand with low backlash.</p>
+              </div>
+              <div>
+                <h4>Mechanical Linkage</h4>
+                <p>Parallel linkage keeps motion linear and repeatable at speed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="telemetry" class="section telemetry">
+        <div class="telemetry-header">
+          <div>
+            <h2>Live Telemetry</h2>
+            <p>Simulated stream reflecting the MQTT feedback loop.</p>
+          </div>
+          <div class="telemetry-pill">MQTT • QoS 1 • 60 fps</div>
+        </div>
+        <div class="telemetry-grid">
+          <div class="telemetry-card">
+            <h3>Finger Positions</h3>
+            <div class="bars" id="finger-bars"></div>
+          </div>
+          <div class="telemetry-card">
+            <h3>Latency Monitor</h3>
+            <div class="latency">
+              <span id="latency-value">16</span>
+              <span class="latency-unit">ms</span>
+            </div>
+            <div class="latency-wave" id="latency-wave"></div>
+          </div>
+          <div class="telemetry-card">
+            <h3>MQTT Topics</h3>
+            <div class="topic">
+              <span>hand/raw</span>
+              <span class="topic-state">IN</span>
+            </div>
+            <div class="topic">
+              <span>hand/filtered</span>
+              <span class="topic-state out">OUT</span>
+            </div>
+            <div class="topic">
+              <span>hand/feedback</span>
+              <span class="topic-state">IN</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Python signal processing • MQTT messaging • Real-time control</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
