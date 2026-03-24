@@ -7,7 +7,9 @@ Mechanical system that mirrors human hand motion in real time with a Python sign
 
 ## Screenshot
 
-![Mirror Hand UI](docs/screenshot.svg)
+![Remote Surgery](docs/screenshot-surgery.svg)
+![Warehouse Automation](docs/screenshot-warehouse.svg)
+![Disaster Response](docs/screenshot-rescue.svg)
 
 ## Run Locally
 

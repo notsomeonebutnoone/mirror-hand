@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1b27"/>
+      <stop offset="100%" stop-color="#0a1016"/>
+    </linearGradient>
+    <linearGradient id="arm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#87f0ff"/>
+      <stop offset="100%" stop-color="#34b6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="60" y="60" width="1080" height="555" rx="28" fill="#101d2a" stroke="#2b3a4b" stroke-width="2"/>
+
+  <text x="100" y="130" fill="#eef4f8" font-family="Arial, sans-serif" font-size="34">
+    Warehouse Automation • MQTT Control Loop
+  </text>
+  <text x="100" y="168" fill="#b6c5d3" font-family="Arial, sans-serif" font-size="18">
+    Robotic arm routes packages based on live sensor streams.
+  </text>
+
+  <rect x="90" y="220" width="520" height="320" rx="22" fill="#0c121a" stroke="#3a4b5c"/>
+  <rect x="650" y="220" width="460" height="320" rx="22" fill="#0c121a" stroke="#3a4b5c"/>
+
+  <rect x="130" y="260" width="130" height="60" rx="10" fill="#142231" stroke="#3a4b5c"/>
+  <rect x="290" y="260" width="130" height="60" rx="10" fill="#142231" stroke="#3a4b5c"/>
+  <rect x="450" y="260" width="130" height="60" rx="10" fill="#142231" stroke="#3a4b5c"/>
+  <rect x="130" y="340" width="130" height="60" rx="10" fill="#142231" stroke="#3a4b5c"/>
+  <rect x="290" y="340" width="130" height="60" rx="10" fill="#142231" stroke="#3a4b5c"/>
+  <rect x="450" y="340" width="130" height="60" rx="10" fill="#142231" stroke="#3a4b5c"/>
+  <text x="140" y="395" fill="#87f0ff" font-family="Arial, sans-serif" font-size="12">Bins</text>
+
+  <path d="M720 300h150" stroke="url(#arm)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M795 300v70" stroke="url(#arm)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M795 370l-60 60" stroke="url(#arm)" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="735" cy="430" r="24" fill="#87f0ff"/>
+  <rect x="880" y="360" width="140" height="80" rx="12" fill="#182636" stroke="#3a4b5c"/>
+  <text x="885" y="450" fill="#b6c5d3" font-family="Arial, sans-serif" font-size="12">Sorting Dock</text>
+
+  <path d="M610 320 C650 260, 690 260, 730 320" fill="none" stroke="#87f0ff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M610 360 C650 420, 690 420, 730 360" fill="none" stroke="#ff7a4f" stroke-width="3" stroke-linecap="round"/>
+  <text x="620" y="345" fill="#87f0ff" font-family="Arial, sans-serif" font-size="12">MQTT</text>
+</svg>

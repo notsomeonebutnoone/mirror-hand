@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#101924"/>
+      <stop offset="100%" stop-color="#0b1118"/>
+    </linearGradient>
+    <linearGradient id="arm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#87f0ff"/>
+      <stop offset="100%" stop-color="#ff7a4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="60" y="60" width="1080" height="555" rx="28" fill="#101d2a" stroke="#2b3a4b" stroke-width="2"/>
+
+  <text x="100" y="130" fill="#eef4f8" font-family="Arial, sans-serif" font-size="34">
+    Remote Surgery • Robotic Arm via MQTT
+  </text>
+  <text x="100" y="168" fill="#b6c5d3" font-family="Arial, sans-serif" font-size="18">
+    Surgeon console streams motion targets to the operating arm in real time.
+  </text>
+
+  <rect x="90" y="220" width="420" height="300" rx="22" fill="#0c121a" stroke="#3a4b5c"/>
+  <rect x="550" y="220" width="560" height="300" rx="22" fill="#0c121a" stroke="#3a4b5c"/>
+
+  <circle cx="210" cy="320" r="55" fill="#1a2735" stroke="#3a4b5c"/>
+  <circle cx="340" cy="320" r="55" fill="#1a2735" stroke="#3a4b5c"/>
+  <rect x="175" y="380" width="200" height="90" rx="18" fill="#131f2b" stroke="#3a4b5c"/>
+  <text x="196" y="430" fill="#87f0ff" font-family="Arial, sans-serif" font-size="14">SURGEON CONSOLE</text>
+
+  <rect x="610" y="260" width="220" height="210" rx="16" fill="#131f2b" stroke="#3a4b5c"/>
+  <rect x="860" y="260" width="220" height="210" rx="16" fill="#131f2b" stroke="#3a4b5c"/>
+  <path d="M720 300h120" stroke="url(#arm)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M780 300v60" stroke="url(#arm)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M780 360l-50 50" stroke="url(#arm)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="730" cy="410" r="22" fill="#ff7a4f"/>
+  <text x="625" y="500" fill="#b6c5d3" font-family="Arial, sans-serif" font-size="14">Robotic Arm</text>
+  <text x="900" y="500" fill="#b6c5d3" font-family="Arial, sans-serif" font-size="14">Patient Bay</text>
+
+  <path d="M510 330 C560 260, 610 260, 660 330" fill="none" stroke="#87f0ff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M510 370 C560 430, 610 430, 660 370" fill="none" stroke="#ff7a4f" stroke-width="3" stroke-linecap="round"/>
+  <text x="520" y="350" fill="#87f0ff" font-family="Arial, sans-serif" font-size="12">MQTT</text>
+</svg>
